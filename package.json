@@ -1,0 +1,11 @@
+{
+  "name": "audio-lesson",
+  "version": "1.0.0",
+  "description": "Lesson in audio files",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Lim",
+  "license": "MIT"
+}
