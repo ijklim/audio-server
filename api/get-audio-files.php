@@ -24,14 +24,12 @@ foreach ($scanResults as $scanResult) {
         $audioFileFolder = $audioFolder."/".$scanResult;
         $files = array_filter(
             scandir($audioFileFolder),
-            function($file) {
-                global $audioFileFolder;
+            function ($file) use ($audioFileFolder) {
                 return is_file($audioFileFolder . '/' . $file);
             }
         );
         // Add folder information
-        $files = array_map(function($file) {
-            global $scanResult;
+        $files = array_map(function ($file) use ($scanResult) {
             return array(
                 'audioName' => formatForDisplay(str_replace('.mp3', '' , $file)),
                 'audioPath' => $_ENV['AUDIO_FOLDER'] . '/' . $scanResult . '/' . $file
