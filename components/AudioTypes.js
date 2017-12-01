@@ -16,25 +16,57 @@ Vue.component('audio-player', {
   props: ['file']
 });
 
+Vue.component('audio-type', {
+  template: `
+    <div>
+      <h4 class="card-header bg-dark text-light">
+        {{ audioType.name }}
+        <button
+          class='btn btn-sm float-right'
+          @click='toggle'
+          :class='{ "btn-danger": show, "btn-success": !show }'
+        >
+          {{ buttonText }}
+        </button>
+      </h4>
+      <div v-if='show' class='card-body row'>
+        <audio-player
+          v-for='(file, index) in audioType.files'
+          :key='index'
+          :file='file'
+        />
+      </div>
+    </div>
+  `,
+
+  props: ['audioType'],
+  data() {
+    return {
+      show: false
+    }
+  },
+  computed: {
+    buttonText() {
+      return this.show ? '-' : '+';
+    }
+  },
+
+  methods: {
+    toggle() {
+      this.show = !this.show;
+    }
+  }
+});
+
 Vue.component('audio-types', {
   template: `
     <div class='col-12'>
-      <div
-        class='card border-warning my-2'
+      <audio-type
+        class='card border-dark my-2'
         v-for='(audioType, index) in audioTypes'
         :key='index'
-      >
-        <h5 class="card-header bg-warning">
-          {{ audioType.name }}
-        </h5>
-        <div class='card-body row'>
-          <audio-player
-            v-for='(file, index) in audioType.files'
-            :key='index'
-            :file='file'
-          />
-        </div>
-      </div>
+        :audioType='audioType'
+      />
     </div>
     `,
 
