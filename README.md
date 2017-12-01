@@ -31,5 +31,20 @@ Rename or make a copy of the `.env.example` to create `.env`, modify settings as
 
 ### Step #4: Create a shell script to launch the server
 
-{% gist 3f391f0756ee5b70785c12bbfb834944 gist.md %}
+Create file `start-audio-server.cmd` in the project root folder
 
+```bash
+c:\php\php -S localhost:80 router.php
+```
+
+That should be it! The server is now available at http://localhost
+
+## How to add and maintain audio files
+
+Locate the folder `audio` (unless this has been changed in the `.env` file).
+
+Delete the sample folders and files within them.
+
+Create new folder(s) with names separated by -. For example folder `Javascript-for-Beginners` will create a group called **Javascript for Beginners**.
+
+Audio files within the folder will be named with the same format. Currently only mp3 audio files are supported.
