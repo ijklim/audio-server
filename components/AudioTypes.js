@@ -1,37 +1,39 @@
 Vue.component('audio-player', {
   template: `
-    <div>
-      {{ file.audioName }}
-      <audio controls>
-        <source :src="file.audioPath" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
+    <div class='col-lg-4 col-md-6 col-12 mb-3'>
+      <div class='card-title'>
+        {{ file.audioName }}
+      <div>
+      <div class='card-text mt-2'>
+        <audio controls>
+          <source :src="file.audioPath" type="audio/mpeg">
+          Your browser does not support the <code>audio</code> element.
+        </audio>
+      </div>
     </div>
     `,
 
-  props: ['file'],
-
-  mounted() {
-    // console.log(this.file.audioName);
-  }
+  props: ['file']
 });
 
 Vue.component('audio-types', {
   template: `
     <div class='col-12'>
       <div
+        class='card border-warning my-2'
         v-for='(audioType, index) in audioTypes'
         :key='index'
       >
-        <h2 class='my-2'>
+        <h5 class="card-header bg-warning">
           {{ audioType.name }}
-        </h2>
-        <audio-player
-          v-for='(file, index) in audioType.files'
-          :key='index'
-          :file='file'
-        >
-        </audio-player>
+        </h5>
+        <div class='card-body row'>
+          <audio-player
+            v-for='(file, index) in audioType.files'
+            :key='index'
+            :file='file'
+          />
+        </div>
       </div>
     </div>
     `,
