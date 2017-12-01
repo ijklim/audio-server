@@ -31,5 +31,5 @@ Rename or make a copy of the `.env.example` to create `.env`, modify settings as
 
 ### Step #4: Create a shell script to launch the server
 
-<script src="https://gist.github.com/ijklim/3f391f0756ee5b70785c12bbfb834944.js"></script>
+{% gist 3f391f0756ee5b70785c12bbfb834944 gist.md %}
 
