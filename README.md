@@ -1,4 +1,4 @@
-# Audio files server built with runtime Vue.js 2.0 and Bootstrap 4
+# Audio files server built with Vue.js 2.0 and Bootstrap 4
 
 The audio files are meant to be served over a local network. Idea came from a request from a non profit wanting to serve recorded lessons to several listeners at the same time.
 
