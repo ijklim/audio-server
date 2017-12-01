@@ -8,9 +8,5 @@
   },
   "author": "Ivan Lim",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.16.2",
-    "express-htaccess-middleware": "^0.1.0",
-    "php-express": "0.0.3"
-  }
+  "dependencies": {}
 }
