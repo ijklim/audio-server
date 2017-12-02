@@ -13,7 +13,7 @@ The audio files are meant to be served over a local network. Idea came from a re
 
 ### Step 1: Download PHP
 
-PHP runtime can be downloaded from https://windows.php.net/download/
+PHP runtime can be downloaded from http://windows.php.net/download
 
 Extract the files from the zip archive into a local folder, for example `C:\php`
 
@@ -23,13 +23,20 @@ Extract the files from the zip archive into a local folder, for example `C:\php`
 
 ```bash
 git clone https://github.com/ijklim/audio-server.git
+cd audio-server
 ```
 
-### Step #3: Update environment settings
+### Step #3: Download third party module
+
+```bash
+composer update
+```
+
+### Step #4: Update environment settings
 
 Rename or make a copy of the `.env.example` to create `.env`, modify settings as needed.
 
-### Step #4: Create a shell script to launch the server
+### Step #5: Create a shell script to launch the server
 
 Create file `start-audio-server.cmd` in the project root folder
 
@@ -37,7 +44,13 @@ Create file `start-audio-server.cmd` in the project root folder
 c:\php\php -S localhost:80 router.php
 ```
 
-That should be it! The server is now available at http://localhost
+Use this to allow other computers on the network to access the app via ip address
+
+```bash
+c:\php\php -S 0.0.0.0:80 router.php
+```
+
+That should be it! The server is now available at http://localhost or http://{ip-address}
 
 ## How to add and maintain audio files
 
