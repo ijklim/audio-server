@@ -36,5 +36,17 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
 }
 
 if ($finalFilePath) {
-    include($finalFilePath);
+    switch (substr($finalFilePath, -4)) {
+        case '.mp3':
+            header('Content-type: audio/mpeg');
+            header('Content-length: ' . filesize($finalFilePath));
+            header('Content-Disposition: filename=' . 'test.mp3');
+            header('X-Pad: avoid browser bug');
+            header('Cache-Control: no-cache');
+            readfile($finalFilePath);
+            break;
+        default:
+            include($finalFilePath);
+            break;
+    }
 }
