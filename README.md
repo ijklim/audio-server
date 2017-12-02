@@ -19,24 +19,30 @@ Extract the files from the zip archive into a local folder, for example `C:\php`
 
 ### Step 2: Download project
 
-(Optional) You can specify a folder after the git url to store the downloaded files
-
 ```bash
 git clone https://github.com/ijklim/audio-server.git
 cd audio-server
 ```
 
-### Step #3: Download third party module
+(Optional) You can add a folder name after the git url to specify where to store the downloaded files. Default is `audio-server`.
+
+### Step #3: Download and install Composer
+
+Composer is a dependency manager for PHP.
+
+Visit https://getcomposer.org/download/ and download the Composer-Setup.exe
+
+### Step #4: Download third party modules
 
 ```bash
-composer update
+composer install
 ```
 
-### Step #4: Update environment settings
+### Step #5: Update environment settings
 
 Rename or make a copy of the `.env.example` to create `.env`, modify settings as needed.
 
-### Step #5: Create a shell script to launch the server
+### Step #6: Create a shell script to launch the server
 
 Create file `start-audio-server.cmd` in the project root folder
 
