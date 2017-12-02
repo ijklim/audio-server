@@ -5,7 +5,7 @@ Vue.component('audio-player', {
         {{ file.audioName }}
       <div>
       <div class='card-text mt-2'>
-        <audio controls>
+        <audio controls controlsList='nodownload'>
           <source :src="file.audioPath" type="audio/mpeg">
           Your browser does not support the <code>audio</code> element.
         </audio>
