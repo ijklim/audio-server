@@ -42,21 +42,15 @@ composer install
 
 Rename or make a copy of the `.env.example` to create `.env`, modify settings as needed.
 
-### Step #6: Create a shell script to launch the server
+### Step #6: Create a shell script to launch the app
 
-Create file `start-audio-server.cmd` in the project root folder
-
-```bash
-c:\php\php -S localhost:80 router.php
-```
-
-Use this to allow other computers on the network to access the app via ip address
+Create file `start-audio-server.cmd` in the project root folder.
 
 ```bash
 c:\php\php -S 0.0.0.0:80 router.php
 ```
 
-That should be it! The server is now available at http://localhost or http://{ip-address}
+That should be it! Start the server by executing `start-audio-server.cmd`. Access the site by visiting http://{ip-address}.
 
 ## How to add and maintain audio files
 
