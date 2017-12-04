@@ -38,12 +38,21 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
 if ($finalFilePath) {
     switch (substr($finalFilePath, -4)) {
         case '.mp3':
-            header('Content-type: audio/mpeg');
-            header('Content-length: ' . filesize($finalFilePath));
-            header('Content-Disposition: filename=' . 'test.mp3');
-            header('X-Pad: avoid browser bug');
-            header('Cache-Control: no-cache');
-            readfile($finalFilePath);
+            $referer = $_SERVER['HTTP_REFERER'] ?? false;
+            if ($referer) {
+                // TODO: Check same referer before serving file
+                header('Content-type: audio/mpeg');
+                header('Content-length: ' . filesize($finalFilePath));
+                header('Content-Disposition: filename=' . 'test.mp3');
+                header('X-Pad: avoid browser bug');
+                header('Cache-Control: no-cache');
+                readfile($finalFilePath);
+            } else {
+                // Direct request of audio file is not permitted
+                echo 'Resource is not available';
+            }
+
+            
             break;
         default:
             include($finalFilePath);
