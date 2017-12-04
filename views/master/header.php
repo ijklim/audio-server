@@ -21,6 +21,7 @@
       font-family: 'Righteous', sans-serif;
     }
 
+    .clickable:hover,
     button:hover {
       cursor: pointer;
     }

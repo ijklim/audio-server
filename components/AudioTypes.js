@@ -19,7 +19,10 @@ Vue.component('audio-player', {
 Vue.component('audio-type', {
   template: `
     <div>
-      <h4 class="card-header bg-dark text-light">
+      <h4
+        @click='toggle'
+        class="card-header bg-dark text-light clickable"
+      >
         {{ audioType.name }}
         <button
           class='btn btn-sm float-right'
