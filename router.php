@@ -46,6 +46,9 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
             break;
         }
     }
+    if (!$finalFilePath) {
+        http_response_code(404);
+    }
 } else {
     // Auto add .php
     $checkFile = realpath($filePath . '.php');
@@ -70,10 +73,9 @@ if ($finalFilePath) {
                 readfile($finalFilePath);
             } else {
                 // Direct request of audio file is not permitted
+                http_response_code(404);
                 echo 'Resource is not available';
             }
-
-            
             break;
         default:
             include($finalFilePath);
