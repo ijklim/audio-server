@@ -2,10 +2,32 @@
 // Ref: https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
 // Ref: http://php.net/manual/en/features.commandline.webserver.php
 
+/* Debug information */
+if (0) {
+    echo '<pre>';
+    print_r($_SERVER);
+    echo '</pre>';
+}
+
+
+
 chdir(__DIR__);
+
 // Note: Somehow php knows how to deal with a mixture of / and \ in file path
-$filePath = $_SERVER['DOCUMENT_ROOT'].$_SERVER["REQUEST_URI"];
 $finalFilePath = false; // Will contain proper file path if the request is valid
+if (isset($_SERVER["PATH_INFO"])) {
+    // e.g. http://localhost/动物, http://localhost/z
+    $filePath = $_SERVER['DOCUMENT_ROOT'].$_SERVER["PATH_INFO"];
+} else if ($_SERVER["SCRIPT_FILENAME"] != 'router.php' && is_file($_SERVER["SCRIPT_FILENAME"])) {
+    // e.g. http://localhost/audio/相同/动物.mp3, http://localhost/动物.php
+    $filePath = $_SERVER["SCRIPT_FILENAME"];
+} else {
+    $filePath = $_SERVER['DOCUMENT_ROOT'].$_SERVER["REQUEST_URI"];
+}
+
+
+
+
 if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
     // File or directory starting with . is prohibited
     // Note: \/ = /
@@ -31,7 +53,7 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
         // Matches a file after add .php
         $finalFilePath = $checkFile;
     } else {
-        echo 'File not found: ' . $filePath;
+        echo '<p>* File not found: ' . $filePath;
     }
 }
 
@@ -43,7 +65,6 @@ if ($finalFilePath) {
                 // TODO: Check same referer before serving file
                 header('Content-type: audio/mpeg');
                 header('Content-length: ' . filesize($finalFilePath));
-                header('Content-Disposition: filename=' . 'test.mp3');
                 header('X-Pad: avoid browser bug');
                 header('Cache-Control: no-cache');
                 readfile($finalFilePath);
