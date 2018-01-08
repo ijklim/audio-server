@@ -66,5 +66,5 @@ Audio files within the folder will be named with the same format. Currently only
 
 Problem: The app header shows up but none of the audio folder shows up on my Android Chrome
 
-Solution: Update Chrome to version 63.0.3239.111 or above. This is available on the Google *Play Store*.
+Solution: Update Chrome to version 63.0.3239.111 or above. This is available on the Google **Play Store**.
 
