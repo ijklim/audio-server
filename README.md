@@ -61,3 +61,10 @@ Delete the sample folders and files within them.
 Create new folder(s) with names separated by -. For example folder `Javascript-for-Beginners` will create a group called **Javascript for Beginners**.
 
 Audio files within the folder will be named with the same format. Currently only mp3 audio files are supported.
+
+## Troubleshoot
+
+Problem: The app header shows up but none of the audio folder shows up on my Android Chrome
+
+Solution: Update Chrome to version 63.0.3239.111 or above. This is available on the Google *Play Store*.
+
