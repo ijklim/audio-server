@@ -25,8 +25,9 @@ function removeFileExtension($file) {
 }
 
 foreach ($scanResults as $scanResult) {
-    if ($scanResult == '.' || $scanResult == '..') {
+    if ($scanResult == '.' || $scanResult == '..' || $scanResult[0] == '_') {
         // Do nothing
+        // 1/10/18 Folders starting with _ is hidden
     } else if (is_dir($audioFolder."/".$scanResult)) {
         $audioFileFolder = $audioFolder."/".$scanResult;
         $files = array_filter(
