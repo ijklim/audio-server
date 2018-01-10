@@ -17,6 +17,7 @@ chdir(__DIR__);
 
 // Note: Somehow php knows how to deal with a mixture of / and \ in file path
 $finalFilePath = false; // Will contain proper file path if the request is valid
+$homePath = __DIR__ . '/index.php';
 if (isset($_SERVER["PATH_INFO"])) {
     // e.g. http://localhost/动物, http://localhost/z
     $filePath = $_SERVER['DOCUMENT_ROOT'].$_SERVER["PATH_INFO"];
@@ -65,7 +66,11 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
         if (is_dir($restrictedFolder)) {
             $finalFilePath = __DIR__ . '/restricted.php';
         } else {
-            echo '<p>* File not found: ' . $filePath;
+            if ($_ENV['DEBUG'] === true) {
+                echo '<p>* File not found: ' . $filePath;
+            } else {
+                $finalFilePath = $homePath;
+            }
         }
     }
 }
