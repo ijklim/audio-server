@@ -9,12 +9,19 @@ $scanResults = scandir($audioFolder);
 $audioTypes = array();
 
 /**
- Remove -, capitalize first letter of each word
-    */
+ * Remove -, capitalize first letter of each word
+ */
 function formatForDisplay($name) {
     $result = str_replace('-', ' ', $name);
     //$result = ucwords($result);
     return $result;
+}
+
+/**
+ * Remove file extension
+ */
+function removeFileExtension($file) {
+    return pathinfo($file, PATHINFO_FILENAME);
 }
 
 foreach ($scanResults as $scanResult) {
@@ -31,7 +38,7 @@ foreach ($scanResults as $scanResult) {
         // Add folder information
         $files = array_map(function ($file) use ($scanResult) {
             return array(
-                'audioName' => formatForDisplay(str_replace('.mp3', '' , $file)),
+                'audioName' => formatForDisplay(removeFileExtension($file)),
                 'audioPath' => $_ENV['AUDIO_FOLDER'] . '/' . $scanResult . '/' . $file
             );
         }, $files);
