@@ -9,6 +9,13 @@ $scanResults = scandir($audioFolder);
 $audioTypes = array();
 
 /**
+ * Check whether $file is an acceptable audio file
+ */
+function is_audio_file($file) {
+    return (is_file($file) && strtolower(substr($file, -4)) === '.mp3');
+}
+
+/**
  * Remove -, capitalize first letter of each word
  */
 function formatForDisplay($name) {
@@ -27,13 +34,13 @@ function removeFileExtension($file) {
 foreach ($scanResults as $scanResult) {
     if ($scanResult == '.' || $scanResult == '..' || $scanResult[0] == '_') {
         // Do nothing
-        // 1/10/18 Folders starting with _ is hidden
+        // 1/10/18 Folders starting with _ are hidden
     } else if (is_dir($audioFolder."/".$scanResult)) {
         $audioFileFolder = $audioFolder."/".$scanResult;
         $files = array_filter(
             scandir($audioFileFolder),
             function ($file) use ($audioFileFolder) {
-                return is_file($audioFileFolder . '/' . $file);
+                return is_audio_file($audioFileFolder . '/' . $file);
             }
         );
         // Add folder information
