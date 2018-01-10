@@ -1,28 +1,11 @@
-Vue.component('audio-player', {
-  template: `
-    <div class='col-lg-4 col-md-6 col-12 mb-3'>
-      <div class='card-title'>
-        {{ file.audioName }}
-      <div>
-      <div class='card-text mt-2'>
-        <audio controls controlsList='nodownload'>
-          <source :src="file.audioPath" type="audio/mpeg">
-          Your browser does not support the <code>audio</code> element.
-        </audio>
-      </div>
-    </div>
-    `,
-
-  props: ['file']
-});
-
 Vue.component('restricted-audios', {
   template: `
     <div class='col-12'>
-      <audio-player
-        v-for='(audioFile, index) in audioFiles'
+      <audio-type
+        class='card border-dark my-2'
+        v-for='(audioType, index) in audioTypes'
         :key='index'
-        :file='audioFile'
+        v-bind='{audioType, collapsible}'
       />
     </div>
     `,
@@ -31,7 +14,8 @@ Vue.component('restricted-audios', {
   props: ['folderCode'],
   data() {
     return {
-      audioFiles: []
+      audioTypes: [],
+      collapsible: false
     }
   },
 
@@ -45,13 +29,13 @@ Vue.component('restricted-audios', {
     };
 
     fetch('/api/get-restricted-files.php?folderCode=' + this.folderCode, fetchInit)
+    // fetch('/api/get-restricted-files.php?folderCode=' + this.folderCode)
       .then(response => response.json())
       .then(json => {
-        // console.log(json)
-        this.audioFiles = json;
+        this.audioTypes = json;
       })
       .catch(error => {
-        console.error("Encountered a problem retrieving audio files: " + error);
+        console.error("Encountered a problem retrieving restricted audio files: " + error);
       });
   }
 
