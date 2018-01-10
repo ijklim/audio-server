@@ -68,3 +68,10 @@ Problem: The app header shows up but none of the audio folder shows up on my And
 
 Solution: Update Chrome to version 63.0.3239.111 or above. This is available on the Google **Play Store**.
 
+Problem: http://localhost is working, but other computers cannot connect via ip
+
+Solution: Bash command to start server must use **0.0.0.0** and not **localhost**. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
+
+Problem: Web page does not seem to be working on mobile phone
+
+Solution: Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
