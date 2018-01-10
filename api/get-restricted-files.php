@@ -3,6 +3,8 @@ require_once 'modules/file-path.php';
 
 // Locate available audio types: first level folders in AUDIO_FOLDER
 $audioFolder = __DIR__ . '/..' . $_ENV['AUDIO_FOLDER'] . '/_' . $_GET['folderCode'];
+if (!is_dir($audioFolder)) exit;
+
 $scanResults = scandir($audioFolder);
 
 $audioTypes = array();
