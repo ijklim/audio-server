@@ -66,7 +66,9 @@ v1.1.0+
 
 Folders starting with **_** will be restricted and hidden when accessing the home page.
 
-Restricted folders can be access via `/<folderCode>`, e.g. http://localhost/2598745 will access folder `audio/_2598745`.
+Restricted folders can be access via `/<folderCode>`. For example http://localhost/123456 will access folder `audio/_123456`.
+
+Add a `.name` file to name the restricted audio group. For example `Internal-Memos.name` in the `audio/_123456` folder will create a group called **Internal Memos**.
 
 ## Troubleshoot
 
