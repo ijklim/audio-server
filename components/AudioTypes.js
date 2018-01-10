@@ -70,7 +70,7 @@ Vue.component('audio-types', {
         :audioType='audioType'
       />
     </div>
-    `,
+  `,
 
   
   data() {

@@ -27,7 +27,6 @@ if (isset($_SERVER["PATH_INFO"])) {
 
 
 
-
 if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
     // File or directory starting with . is prohibited
     // Note: \/ = /
@@ -56,7 +55,17 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
         // Matches a file after add .php
         $finalFilePath = $checkFile;
     } else {
-        echo '<p>* File not found: ' . $filePath;
+        // Support link to access restricted audio folders starting with _
+        // e.g. localhost/5898775 matches /audio/_5898775
+        require_once __DIR__ . '/autoload.php';
+        $audioFolder = __DIR__ . $_ENV['AUDIO_FOLDER'];
+        $folderCode = pathinfo($filePath, PATHINFO_FILENAME);
+        $restrictedFolder = $audioFolder . '/_' . $folderCode;
+        if (is_dir($restrictedFolder)) {
+            $finalFilePath = __DIR__ . '/restricted.php';
+        } else {
+            echo '<p>* File not found: ' . $filePath;
+        }
     }
 }
 

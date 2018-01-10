@@ -3,7 +3,7 @@
 require(__DIR__ . '/..' . '/autoload.php');
 
 // Locate available audio types: first level folders in AUDIO_FOLDER
-$audioFolder = __DIR__ . '/../' . $_ENV['AUDIO_FOLDER'];
+$audioFolder = __DIR__ . '/..' . $_ENV['AUDIO_FOLDER'];
 $scanResults = scandir($audioFolder);
 
 $audioTypes = array();

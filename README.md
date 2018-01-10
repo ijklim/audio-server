@@ -62,6 +62,12 @@ Create new folder(s) with names separated by -. For example folder `Javascript-f
 
 Audio files within the folder will be named with the same format. Currently only mp3 audio files are supported.
 
+v1.1.0+
+
+Folders starting with **_** will be restricted and hidden when accessing the home page.
+
+Restricted folders can be access via `/<folderCode>`, e.g. http://localhost/2598745 will access folder `audio/_2598745`.
+
 ## Troubleshoot
 
 Problem: The app header shows up but none of the audio folder shows up on my Android Chrome
