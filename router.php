@@ -61,7 +61,7 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
 }
 
 if ($finalFilePath) {
-    switch (substr($finalFilePath, -4)) {
+    switch (strtolower(substr($finalFilePath, -4))) {
         case '.mp3':
             $referer = $_SERVER['HTTP_REFERER'] ?? false;
             if ($referer) {
