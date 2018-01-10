@@ -26,7 +26,6 @@ Vue.component('audio-type', {
         {{ audioType.name }}
         <button
           class='btn btn-sm float-right'
-          @click='toggle'
           :class='{ "btn-danger": show, "btn-success": !show }'
         >
           {{ buttonText }}
