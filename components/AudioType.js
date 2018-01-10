@@ -16,7 +16,7 @@ Vue.component('audio-type', {
       </h4>
       <div v-if='show' class='card-body row'>
         <audio-player
-          v-for='(file, index) in audioType.files'
+          v-for='(file, index) in audioType.audioFiles'
           :key='index'
           :file='file'
         />

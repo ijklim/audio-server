@@ -1,4 +1,3 @@
-<?php require_once __DIR__ . '/autoload.php'; ?>
 <?php require_once __DIR__ . '/views/master/header.php'; ?>
 
 <body>
@@ -11,6 +10,8 @@
   </div>
 
 <?php require('./views/master/js.php'); ?>
+<script src="./components/AudioPlayer.js"></script>
+<script src="./components/AudioType.js"></script>
 <script src="./components/AudioTypes.js"></script>
 <script>
 new Vue({

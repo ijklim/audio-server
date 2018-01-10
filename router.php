@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/autoload.php';
+
 // Ref: https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
 // Ref: http://php.net/manual/en/features.commandline.webserver.php
 
@@ -57,7 +59,6 @@ if (preg_match('/(.)+\/\.(.)+/', $filePath)) {
     } else {
         // Support link to access restricted audio folders starting with _
         // e.g. localhost/5898775 matches /audio/_5898775
-        require_once __DIR__ . '/autoload.php';
         $audioFolder = __DIR__ . $_ENV['AUDIO_FOLDER'];
         $folderCode = pathinfo($filePath, PATHINFO_FILENAME);
         $restrictedFolder = $audioFolder . '/_' . $folderCode;

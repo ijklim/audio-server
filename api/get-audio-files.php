@@ -1,6 +1,5 @@
 <?php
-// Root Folder: __DIR__ . '/..'
-require(__DIR__ . '/..' . '/autoload.php');
+require_once 'modules/file-path.php';
 
 // Locate available audio types: first level folders in AUDIO_FOLDER
 $audioFolder = __DIR__ . '/..' . $_ENV['AUDIO_FOLDER'];
@@ -8,52 +7,33 @@ $scanResults = scandir($audioFolder);
 
 $audioTypes = array();
 
-/**
- * Check whether $file is an acceptable audio file
- */
-function is_audio_file($file) {
-    return (is_file($file) && strtolower(substr($file, -4)) === '.mp3');
-}
-
-/**
- * Remove -, capitalize first letter of each word
- */
-function formatForDisplay($name) {
-    $result = str_replace('-', ' ', $name);
-    //$result = ucwords($result);
-    return $result;
-}
-
-/**
- * Remove file extension
- */
-function removeFileExtension($file) {
-    return pathinfo($file, PATHINFO_FILENAME);
-}
-
 foreach ($scanResults as $scanResult) {
-    if ($scanResult == '.' || $scanResult == '..' || $scanResult[0] == '_') {
+    $filePath = new FilePath($audioFolder . '/' . $scanResult);
+    // echo $filePath;
+    if ($filePath->shouldIgnore() || $filePath->isRestricted()) {
+    // if ($filePath->shouldIgnore()) {
         // Do nothing
-        // 1/10/18 Folders starting with _ are hidden
-    } else if (is_dir($audioFolder."/".$scanResult)) {
-        $audioFileFolder = $audioFolder."/".$scanResult;
-        $files = array_filter(
+    } else if ($filePath->isDirectory()) {
+        $audioFileFolder = $filePath->filePath;
+        $audioFiles = array_filter(
             scandir($audioFileFolder),
             function ($file) use ($audioFileFolder) {
-                return is_audio_file($audioFileFolder . '/' . $file);
+                $fp = new FilePath($audioFileFolder . '/' . $file);
+                return $fp->isAcceptableAudioFile();
             }
         );
         // Add folder information
-        $files = array_map(function ($file) use ($scanResult) {
+        $audioFiles = array_map(function ($file) use ($scanResult) {
+            $fp = new FilePath($_ENV['AUDIO_FOLDER'] . '/' . $scanResult . '/' . $file);
             return array(
-                'audioName' => formatForDisplay(removeFileExtension($file)),
-                'audioPath' => $_ENV['AUDIO_FOLDER'] . '/' . $scanResult . '/' . $file
+                'audioName' => $fp->displayName,
+                'audioPath' => $fp->filePath
             );
-        }, $files);
+        }, $audioFiles);
         $audioTypes[] = [
-            'name' => formatForDisplay($scanResult),
-            'folder' => $scanResult,
-            'files' => $files
+            'name' => $filePath->displayDirectoryName,
+            'folder' => $filePath->fileName,
+            'audioFiles' => $audioFiles
         ];
     }
 }
