@@ -35,13 +35,13 @@ class FilePath
 
 
     /**
-     * . and .. should be ignored in most cases.
+     * Any file or directory starting with . should be ignored
      *
      * @return boolean
      */
     public function shouldIgnore()
     {
-        return ($this->baseName === '.' || $this->baseName === '..');
+        return ($this->baseName)[0] === '.';
     }
 
     /**
@@ -65,13 +65,31 @@ class FilePath
     }
 
     /**
+     * Check if file path is a file.
+     *
+     * @return boolean
+     */
+    public function isFile()
+    {
+        return (is_file($this->filePath));
+    }
+
+    /**
      * Check if file is an actual file and has an audio extension that this system can process.
      *
      * @return boolean
      */
     public function isAcceptableAudioFile()
     {
-        return (is_file($this->filePath) && strtolower(substr($this->filePath, -4)) === '.mp3');
+        if ($this->isFile()) {
+            switch (strtolower(substr($this->filePath, -4))) {
+                case '.mp3':
+                case '.wav':
+                    return true;
+                    break;
+            }
+        }
+        return false;
     }
 
     /**
@@ -81,7 +99,7 @@ class FilePath
      */
     public function isAudioTypeNameFile()
     {
-        return (is_file($this->filePath) && strtolower(substr($this->filePath, -5)) === '.name');
+        return ($this->isFile() && strtolower(substr($this->filePath, -5)) === '.name');
     }
 
 

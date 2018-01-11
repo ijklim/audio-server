@@ -10,7 +10,7 @@
 <body>
   <div id='app' class='container'>
     <div class='row my-3'>
-      <h1 class='col-12'><?= $_ENV['APP_NAME'] ?></h1>
+    <h1 class='col-12'><a href='/'><?= $_ENV['APP_NAME'] ?></a></h1>
       <h6 class='col-12'><?= 'v.'.config('version') ?></h6>
       <restricted-audios v-bind='{folderCode}'></restricted-audios>
     </div>
