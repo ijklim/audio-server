@@ -60,7 +60,7 @@ Delete the sample folders and files within them.
 
 Create new folder(s) with names separated by -. For example folder `Javascript-for-Beginners` will create a group called **Javascript for Beginners**.
 
-Audio files within the folder will be named with the same format. Currently only mp3 audio files are supported.
+Audio files within the folder will be named with the same format. Currently only .mp3 and .wav audio files are supported.
 
 v1.1.0+
 
