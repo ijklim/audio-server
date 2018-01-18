@@ -72,55 +72,19 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 
 ## Troubleshoot
 
-<table>
+**Q: The app header shows up but none of the audio folder shows up on my Android Chrome**
 
-<tbody>
-<tr>
-  <td>
-  <b>The app header shows up but none of the audio folder shows up on my Android Chrome</b>
-  </td>
-</tr>
-</tr>
-  <td>
-  Update Chrome to version 63.0.3239.111 or above. This is available on the Google <b>Play Store</b>.
-  </td>
-</tr>
+Update Chrome to version 63.0.3239.111 or above. This is available on the Google **Play Store**.
 
-<tr>
-  <td>
-  <b>http://localhost is working, but other computers cannot connect via ip</b>
-  </td>
-</tr>
-</tr>
-  <td>
-  Bash command to start server must use <b>0.0.0.0</b> and not <b>localhost</b>. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
-  </td>
-</tr>
+**Q: http://localhost is working, but other computers cannot connect via ip**
 
-<tr>
-  <td>
-  <b>Web page does not seem to be working on mobile phone</b>
-  </td>
-</tr>
-</tr>
-  <td>
-  Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
-  </td>
-</tr>
+Bash command to start server must use **0.0.0.0** and not **localhost**. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
+  
+**Q: Web page does not seem to be working on mobile phone**
 
-<tr>
-  <td>
-  <b>Home page shows error:
+Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
 
-  <br><i>Fatal error: Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at...</i>
-  </td></b>
-</tr>
-</tr>
-  <td>
-  Missing <code>.env</code> file. Make a copy using example file <code>.env.example</code>. Change configuration settings if necessary.
-  </td>
-</tr>
 
-</tbody>
+**Q: Home page shows error: "Fatal error: Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at..."**
 
-</table>
+Missing `.env` file. Make a copy using example file `.env.example`. Change configuration settings if necessary.
