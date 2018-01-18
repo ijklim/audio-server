@@ -73,10 +73,14 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 ## Troubleshoot
 
 <table>
+<colgroup>
+  <col style="width:30%;">
+  <col style="vertical-align:top;">
+</colgroup>
 <thead>
 <tr>
-<th width='30%'>Problem</th>
-<th style='vertical-align:top;'>Solution</th>
+<th>Problem</th>
+<th>Solution</th>
 </tr>
 </thead>
 
