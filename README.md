@@ -72,14 +72,40 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 
 ## Troubleshoot
 
-Problem: The app header shows up but none of the audio folder shows up on my Android Chrome
+<table>
+<thead>
+<tr>
+<th width='30%'>Problem</th>
+<th style='vertical-align:top;'>Solution</th>
+</tr>
+</thead>
 
-Solution: Update Chrome to version 63.0.3239.111 or above. This is available on the Google **Play Store**.
+<tbody>
+<tr>
+  <td>
+  The app header shows up but none of the audio folder shows up on my Android Chrome
+  </td>
+  <td>
+  Update Chrome to version 63.0.3239.111 or above. This is available on the Google <b>Play Store</b>.
+  </td>
+</tr>
 
-Problem: http://localhost is working, but other computers cannot connect via ip
+<tr>
+  <td>
+  http://localhost is working, but other computers cannot connect via ip
+  </td>
+  <td>
+  Bash command to start server must use <b>0.0.0.0</b> and not <b>localhost</b>. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
+  </td>
+</tr>
 
-Solution: Bash command to start server must use **0.0.0.0** and not **localhost**. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
-
-Problem: Web page does not seem to be working on mobile phone
-
-Solution: Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
+<tr>
+  <td>
+  Web page does not seem to be working on mobile phone
+  </td>
+  <td>
+  Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
+  </td>
+</tr>
+</tbody>
+</table>
