@@ -74,7 +74,7 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 
 <table>
 <colgroup>
-  <col style="width:30%;">
+  <col style="vertical-align:top;">
   <col style="vertical-align:top;">
 </colgroup>
 <thead>
