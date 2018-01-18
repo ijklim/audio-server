@@ -74,7 +74,7 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 
 **Q: The app header shows up but none of the audio folder shows up on my Android Chrome**
 
-Update Chrome to version 63.0.3239.111 or above. This is available on the Google **Play Store**.
+Update Chrome to version 63.0.3239.111 or above. This is available on the *Google Play Store*.
 
 **Q: http://localhost is working, but other computers cannot connect via ip**
 
