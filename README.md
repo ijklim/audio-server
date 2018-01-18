@@ -73,43 +73,53 @@ Add a `.name` file to name the restricted audio group. For example `Internal-Mem
 ## Troubleshoot
 
 <table>
-<colgroup>
-  <col style="vertical-align:top;">
-  <col style="vertical-align:top;">
-</colgroup>
+
 <thead>
 <tr>
-<th>Problem</th>
-<th>Solution</th>
+  <th style='width:40%;'>Problem</th>
+  <th>Solution</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-  <td>
+  <td style='vertical-align:top;'>
   The app header shows up but none of the audio folder shows up on my Android Chrome
   </td>
-  <td>
+  <td style='vertical-align:top;'>
   Update Chrome to version 63.0.3239.111 or above. This is available on the Google <b>Play Store</b>.
   </td>
 </tr>
 
 <tr>
-  <td>
+  <td style='vertical-align:top;'>
   http://localhost is working, but other computers cannot connect via ip
   </td>
-  <td>
+  <td style='vertical-align:top;'>
   Bash command to start server must use <b>0.0.0.0</b> and not <b>localhost</b>. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
   </td>
 </tr>
 
 <tr>
-  <td>
+  <td style='vertical-align:top;'>
   Web page does not seem to be working on mobile phone
   </td>
-  <td>
+  <td style='vertical-align:top;'>
   Ensure browser is not in offline mode. Clear cache if necessary. Check the ip of the audio server to ensure it has not changed.
   </td>
 </tr>
+
+<tr>
+  <td style='vertical-align:top;'>
+  Home page shows error:
+
+  <i>Fatal error: Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at...</i>
+  </td>
+  <td style='vertical-align:top;'>
+  Missing <code>.env</code> file. Make a copy using example file <code>.env.example</code>. Change configuration settings if necessary.
+  </td>
+</tr>
+
 </tbody>
+
 </table>
