@@ -78,7 +78,7 @@ Update Chrome to version 63.0.3239.111 or above. This is available on the Google
 
 **Q: http://localhost is working, but other computers cannot connect via ip**
 
-Bash command to start server must use **0.0.0.0** and not **localhost**. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
+Bash command to start server must use *0.0.0.0* and not *localhost*. Ensure port 80 is not being blocked by firewall, try another port number if necessary.
   
 **Q: Web page does not seem to be working on mobile phone**
 
